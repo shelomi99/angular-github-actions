@@ -27,5 +27,4 @@ jobs:
           npm run build
       - name: test
         run: |
-          npm i
           npm run test
