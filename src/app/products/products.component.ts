@@ -20,17 +20,15 @@ export class ProductsComponent implements OnInit {
   countThree: number;
   total: number;
   filteredProducts: any;
+  package: any;
 
   filteredPackages: any[];
   constructor() { }
 
   getByPackagingId(packageId: number): any{
-    this.packageItems.forEach(value => {
-      if (value.packageId === packageId) {
-        console.log(value);
-        return value;
-      }
-    });
+    this.package = this.packageItems.filter(value => value.packageId === packageId);
+    console.log(this.package);
+    return this.package;
   }
 
   getPackagesByProductId(productId: number): any{
@@ -57,7 +55,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getByPackagingId(2);
-    this.getPackagesByProductId(100);
+    this.getPackagesByProductId(200);
   }
 
 }
