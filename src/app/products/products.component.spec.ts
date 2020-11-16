@@ -25,14 +25,13 @@ describe('ProductsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain package', () => {
-    console.log(product);
+  it('should contain package filtered from packageId', () => {
     product = component.getByPackagingId(2);
     console.log(product);
     expect(product).toEqual([ Object({ packageId: 2, productId: 100, quantity: 5, price: 60 }) ]);
   });
 
-  it('should array contains packages', () => {
+  it('should contains packages filtered from productId', () => {
     productArray = component.getPackagesByProductId(100);
     console.log(productArray);
     expect(productArray).toEqual([ Object({ packageId: 1, productId: 100, quantity: 1, price: 15 }),
