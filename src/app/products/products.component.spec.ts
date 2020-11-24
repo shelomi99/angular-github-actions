@@ -25,8 +25,8 @@ describe('ProductsComponent', () => {
   // test cases for getByPackagingId function
   it('getByPackagingId - Test 01', () => {
     product = component.getByPackagingId(2);
-    console.log(product);
-    expect(product).toEqual([ Object({ packageId: 2, productId: 100, quantity: 5, price: 60 }) ]);
+    console.log('thi', product);
+    expect(product).toEqual([ Object({ packageId: 2, productId: 100, quantity: 5, price: 60, stockQuantity: 10 }) ]);
   });
 
   it('getByPackagingId - Test 02', () => {
@@ -51,9 +51,9 @@ describe('ProductsComponent', () => {
   it('getPackagesByProductId - Test 01', () => {
     productArray = component.getPackagesByProductId(100);
     console.log(productArray);
-    expect(productArray).toEqual([ Object({ packageId: 1, productId: 100, quantity: 1, price: 15 }),
-      Object({ packageId: 2, productId: 100, quantity: 5, price: 60 }),
-      Object({ packageId: 3, productId: 100, quantity: 10, price: 100 }) ]);
+    expect(productArray).toEqual([ Object({ packageId: 1, productId: 100, quantity: 1, price: 15, stockQuantity: 10}),
+      Object({ packageId: 2, productId: 100, quantity: 5, price: 60, stockQuantity: 10 }),
+      Object({ packageId: 3, productId: 100, quantity: 10, price: 100, stockQuantity: 5 }) ]);
   });
 
   it('getPackagesByProductId - Test 02', () => {
