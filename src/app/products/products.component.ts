@@ -33,13 +33,13 @@ export class ProductsComponent implements OnInit {
 
   getByPackagingId(packageId: number): any{
     this.package = this.packageItems.filter(value => value.packageId === packageId);
-    console.log(this.package);
+    // console.log(this.package);
     return this.package;
   }
 
   getPackagesByProductId(productId: number): any{
     this.filteredProducts = this.packageItems.filter(value => value.productId === productId);
-    console.log(this.filteredProducts);
+    // console.log(this.filteredProducts);
     return this.filteredProducts;
   }
 
@@ -47,15 +47,13 @@ export class ProductsComponent implements OnInit {
   getCheapestPackagingCombination(productId: number, quantity: number): any {
     this.filteredProducts = this.getPackagesByProductId(productId);
     this.report =  this.recursion(this.filteredProducts, quantity, 0 );
-    console.log('Final report', this.report);
+    console.log('Final report ', this.report);
     return this.report;
   }
 
   recursion(filteredPackages: any, quantity: number, totalPrice: number ): Product[] {
     this.filteredPackages = filteredPackages.filter(item => item.quantity <= quantity );
-
     this.length = this.filteredPackages.length - 1;
-
     this.filteredPackage = this.filteredPackages[this.length];
     this.numberOfPackagesToBuy = Math.floor(quantity / this.filteredPackage.quantity);
     this.remainder = quantity % this.filteredPackage.quantity;
@@ -72,17 +70,17 @@ export class ProductsComponent implements OnInit {
     //   this.price = this.numberOfPackagesToBuy * this.filteredPackage.price ;
     // }
     this.productDetails = new Product(this.filteredPackage.packageId, this.numberOfPackagesToBuy, this.price);
+    this.packageList.push(this.productDetails);
     if (this.remainder > 0) {
       this.recursion(this.filteredPackages, this.remainder, this.price );
     }
-    this.packageList.push(this.productDetails);
     return this.packageList;
   }
 
   ngOnInit(): void {
     // this.getByPackagingId(2);
     // this.getPackagesByProductId(200);
-    this.getCheapestPackagingCombination(100, 15);
+    this.getCheapestPackagingCombination(100, 1);
   }
 
 }

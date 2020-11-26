@@ -25,7 +25,6 @@ describe('ProductsComponent', () => {
   // test cases for getByPackagingId function
   it('getByPackagingId - Test 01', () => {
     product = component.getByPackagingId(2);
-    console.log('thi', product);
     expect(product).toEqual([ Object({ packageId: 2, productId: 100, quantity: 5, price: 60, stockQuantity: 10 }) ]);
   });
 
@@ -75,15 +74,26 @@ describe('ProductsComponent', () => {
   });
 
   // test methods for getCheapestPackagingCombination function
+
   it('getCheapestPackagingCombination - Test 01', () => {
-    productArray = component.getCheapestPackagingCombination(100, 10);
-    console.log('this', productArray);
-    expect(productArray.length).toEqual(3);
+    productArray = component.getCheapestPackagingCombination(100, 1);
+    console.log('this', productArray) ;
+    expect(productArray.length).toEqual(2);
   });
 
   it('getCheapestPackagingCombination - Test 02', () => {
+    productArray = component.getCheapestPackagingCombination(100, 5);
+    expect(productArray.length).toEqual(2);
+  });
+
+  it('getCheapestPackagingCombination - Test 03', () => {
+    productArray = component.getCheapestPackagingCombination(100, 10);
+    expect(productArray.length).toEqual(2);
+  });
+
+  it('getCheapestPackagingCombination - Test 04', () => {
     productArray = component.getCheapestPackagingCombination(100, 15);
-    expect(productArray.length).toEqual(4);
+    expect(productArray.length).toEqual(3);
   });
 
 
